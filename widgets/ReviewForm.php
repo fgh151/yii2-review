@@ -1,12 +1,15 @@
 <?php
 namespace fgh151\review\widgets;
 
+use fgh151\review\components\OverrideView;
 use fgh151\review\models\Review;
 use fgh151\review\assets\Asset;
 use yii\base\Widget;
 
 class ReviewForm extends Widget
 {
+    use OverrideView;
+
 	public $modelId;
     public $votes = [];
     public $defaultVote = 10;

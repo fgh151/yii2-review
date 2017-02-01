@@ -82,3 +82,23 @@ Review list:
 Review form:
 <?=ReviewForm::widget(['model' => $model->id, 'entity' => $model::className()]);?>
 ```
+
+Customize
+---------
+
+You can override widgets views. Just add vie folder in widget. For example:
+
+```php
+<?=ReviewForm::widget([
+    'modelId' => $model->id,
+    'entity' => $model::className(),
+    'viewFolder' => '@app/widgets/yii2-review/views'
+]);?>
+
+<?=ReviewList::widget([
+    'itemId' => $model->id,
+    'entity' => $model::className(),
+    'viewFolder' => '@app/widgets/yii2-review/views'
+]);?>
+
+```
