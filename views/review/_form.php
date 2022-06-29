@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-lg-6">
-            <?= $form->field($model, 'itemId')->textInput(['type' => 'number']) ?>
+            <?= $form->field($model, 'item_id')->textInput(['type' => 'number']) ?>
         </div>
         <div class="col-lg-6">
             <?= $form->field($model, 'vote')->textInput(['type' => 'number']) ?>
@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-lg-6">
-            <?= $form->field($model, 'userId')->textInput(['type' => 'number']) ?>
+            <?= $form->field($model, 'user_id')->textInput(['type' => 'number']) ?>
         </div>
         <div class="col-lg-6">
             <?= $form->field($model, 'name')->textInput() ?>

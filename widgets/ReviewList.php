@@ -32,8 +32,8 @@ class ReviewList extends Widget
         $list = Review::find()
             ->limit($this->limit)
             ->where([
-                'itemId' => $this->itemId,
-                'active' => 'yes',
+                'item_id' => $this->itemId,
+                'active' => true,
                 'entity' => $this->entity
             ])
             ->all();

@@ -14,7 +14,7 @@ class ReviewController  extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['post'],
                 ],
@@ -39,27 +39,27 @@ class ReviewController  extends Controller
 
         if ($model->load(yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['review/update', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     public function actionAdd()
     {
         $model = new Review();
-        $model->active = 'no';
+        $model->active = false;
         $model->date = date('Y-m-d H:i:s');
-        $model->userId = yii::$app->user->id;
+        $model->user_id = yii::$app->getUser()->getId();
         
         if ($model->load(yii::$app->request->post()) && $model->save()) {
             \Yii::$app->session->setFlash('reviewOnModerate', 'Спасибо за отзыв! Он появится сразу после проверки.');
             return $this->redirect(Yii::$app->request->referrer);
-        } else {
-            \Yii::$app->session->setFlash('reviewAddFail', 'Не удалось проверить отзыв. Проверьте, все ли данные заполнены корректно.');
-            return $this->redirect(Yii::$app->request->referrer);
         }
+
+        \Yii::$app->session->setFlash('reviewAddFail', 'Не удалось проверить отзыв. Проверьте, все ли данные заполнены корректно.');
+        return $this->redirect(Yii::$app->request->referrer);
     }
     
     public function actionUpdate($id)
@@ -68,11 +68,11 @@ class ReviewController  extends Controller
 
         if ($model->load(yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['update', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     public function actionDelete($id)
@@ -86,8 +86,8 @@ class ReviewController  extends Controller
     {
         if (($model = Review::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested review does not exist.');
         }
+
+        throw new NotFoundHttpException('The requested review does not exist.');
     }
 }

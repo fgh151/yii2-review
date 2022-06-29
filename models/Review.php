@@ -6,8 +6,8 @@ use yii\db\ActiveRecord;
 /**
  * Class Review
  * @package fgh151\review\models
- * @property integer $userId
- * @property integer $itemId
+ * @property integer $user_id
+ * @property integer $item_id
  * @property integer $vote
  * @property string $name
  * @property string $active
@@ -26,9 +26,11 @@ class Review extends ActiveRecord
     public function rules()
     {
         return [
-            [['userId', 'itemId', 'vote'], 'integer'],
-            [['itemId', 'name', 'entity'], 'required'],
-            [['message', 'active'], 'string'],
+            [['user_id', 'item_id', 'vote'], 'integer'],
+            [['item_id', 'name', 'entity'], 'required'],
+            [['message'], 'string'],
+            [['active'], 'default', 'value' => false],
+            [['active'], 'boolean'],
             [['date'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -38,12 +40,12 @@ class Review extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'userId' => 'Пользователь',
+            'user_id' => 'Пользователь',
             'name' => 'Имя',
             'message' => 'Текст',
             'date' => 'Дата',
             'active' => 'Активность',
-            'itemId' => 'Продукт',
+            'item_id' => 'Продукт',
             'vote' => 'Оценка',
             'entity' => 'entity'
         ];

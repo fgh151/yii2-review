@@ -8,8 +8,9 @@ class ReviewSearch extends Review
     public function rules()
     {
         return [
-            [['id', 'userId', 'itemId', 'vote'], 'integer'],
-            [['message', 'active', 'date'], 'safe'],
+            [['id', 'user_id', 'item_id', 'vote'], 'integer'],
+            [['message', 'date'], 'safe'],
+            [['active'], 'boolean'],
         ];
     }
 
@@ -29,8 +30,8 @@ class ReviewSearch extends Review
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'userId' => $this->userId,
-            'itemId' => $this->itemId,
+            'user_id' => $this->user_id,
+            'item_id' => $this->item_id,
             'active' => $this->active,
             'vote' => $this->vote,
         ]);

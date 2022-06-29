@@ -30,17 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'active',
-                    ['yes' => 'Да', 'no' => 'Нет'],
+                    [true => 'Да', false => 'Нет'],
                     ['class' => 'form-control', 'prompt' => 'Показано']
                 ),
-                'value' => function($model) {
-                    /** @var \fgh151\review\models\Review $model */
-                    if($model->active === 'yes') {
-                        return 'Да';
-                    } else {
-                        return 'Нет';
-                    }
-                }
+                'format' => 'boolean',
             ],
             [
                 'class' => 'yii\grid\ActionColumn',

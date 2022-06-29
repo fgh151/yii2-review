@@ -40,7 +40,8 @@ class ReviewForm extends Widget
         $reviewModel = new Review([
             'vote' => $this->defaultVote,
             'entity' => $this->entity,
-            'itemId' => $this->modelId
+            'item_id' => $this->modelId,
+            'user_id' => \Yii::$app->getUser()->getId(),
         ]);
         
 		return $this->render('reviewForm',

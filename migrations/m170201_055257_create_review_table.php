@@ -14,13 +14,13 @@ class m170201_055257_create_review_table extends Migration {
         try {
             $this->createTable('{{%review}}', [
                 'id' => $this->primaryKey(),
-                'userId' => $this->integer(11),
+                'user_id' => $this->integer(11),
                 'name' => $this->string(255),
                 'message' => $this->text()->notNull(),
                 'date' => $this->dateTime(),
-                'active' => "enum('yes','no')" . " NOT NULL DEFAULT 'no'",
+                'active' => $this->boolean()->defaultValue(false),
                 'entity' => $this->string()->notNull(),
-                'itemId' => $this->integer(11)->notNull(),
+                'item_id' => $this->integer(11)->notNull(),
                 'vote' => $this->smallInteger(3),
             ], $tableOptions);
 

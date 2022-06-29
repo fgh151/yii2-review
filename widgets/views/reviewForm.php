@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="add-review">
     <?php if(Yii::$app->session->hasFlash('reviewAddFail')) { ?>
         <div class="alert alert-danger col-md-12" role="alert">
-            <p align="center"><?= Yii::$app->session->getFlash('reviewAddFail') ?></p>
+            <p class="text-center"><?= Yii::$app->session->getFlash('reviewAddFail') ?></p>
         </div>
     <?php } ?>
     
@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-12">
             <?= $form->field($reviewModel, 'message')->textarea() ?>
         </div>
-    <?= $form->field($reviewModel, 'itemId')->hiddenInput();?>
+    <?= $form->field($reviewModel, 'item_id')->hiddenInput();?>
     <?= $form->field($reviewModel, 'entity')->hiddenInput();?>
         <div class="col-md-12">
             <button type="submit" class="btn btn-success">
